@@ -1,8 +1,39 @@
+import { ArrowUpRight, Badge, Flame, PartyPopper } from "lucide-react";
+import Link from "next/link";
 import React from "react";
+import { Link as ViewTransitionsLink } from "next-view-transitions";
+
+import { ThemeToggle } from "../ui/theme-toggle";
 
 const Header = () => {
   return (
     <>
+      {/* moblie view components buildling */}
+
+      <div className="sm:hidden w-full p-2.5 bg-white dark:bg-black/5">
+        <Link
+          href={"#"}
+          target="_blank"
+          className="flex items-center justify-center gap-2"
+        >
+          <span className="flex items-center gap-2">
+            <PartyPopper className="w-3.5 h-3.5" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-500 via-purple-500 to-pink-500">
+              Explore more Components
+            </span>
+          </span>
+          <span className="group relative inline-flex items-center gap-2 px-3 py-2 text-sm rounded-lg  bg-zinc-900 dark:bg-zin-100 transition-colors">
+            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-fuchsia-600 via-purple-500 to-pink-500 group-hover:opacity-80 blur-sm transition-opacity duration-500" />
+            <div className="relative z-10 flex items-center gap-2">
+              <span className="text-white dark:text-zinc-900">
+                CodeSnippetUI Pro
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white/90 dark:text-zinc-900" />
+            </div>
+          </span>
+        </Link>
+      </div>
+
       <div className="sticky top-0 right-0 left-0 z-50">
         <div className="bg-white dark:bg-black/5 w-full">
           {/* Rest of the header content */}
@@ -21,7 +52,48 @@ const Header = () => {
             transition-all duration-300 ease-in-out
             `}
           >
-            
+            <div className="relative z-10 flex items-center justify-between w-full gap-2">
+              {/* logo section */}
+              <div className="flex items-center gap-6">
+                <Link href={"/"} className="flex items-center gap-2">
+                  <Flame className="w-6 h-6 text-green-600 dark:text-green-400" />
+                  <span className="hidden sm:block font-semibold">
+                    CodeSnippetUI
+                  </span>
+                </Link>
+                <span className="text-zinc-300 dark:text-zinc-700">|</span>
+
+                {/* desktop Navigation */}
+                <div className="hidden sm:flex items-center gap-4">
+                  <ViewTransitionsLink
+                    href={"/docs/components/background-paths"}
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                  >
+                    Components
+                  </ViewTransitionsLink>
+                  <ViewTransitionsLink
+                    href={"/docs/components/background-paths"}
+                    className="text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                  >
+                    pricing
+                  </ViewTransitionsLink>
+                  <Link
+                    href={"#"}
+                    className="flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors"
+                  >
+                    Templates
+                    <span className="px-2 text-sm border-1 rounded-full   border-green-500 bg-green-100 text-green-600 hover:bg-green-400/90">
+                      new
+                    </span>
+                  </Link>
+                </div>
+              </div>
+              {/* rightSideIcon */}
+              <div className="hidden sm:flex items-center gap-3">
+                <span className="text-zinc-300 dark:text-zinc-900 ">|</span>
+                <ThemeToggle />
+              </div>
+            </div>
           </div>
         </div>
       </div>
